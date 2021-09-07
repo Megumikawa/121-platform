@@ -807,27 +807,30 @@ export class ProgramPeopleAffectedComponent implements OnInit {
   public async statusPopup(row: PersonRow, column, value) {
     const hasError = this.hasError(row, column.installmentIndex);
     const hasWaiting = this.hasWaiting(row, column.installmentIndex);
-    const content = hasWaiting
-      ? row[column.prop + '-error']
-      : hasError
-      ? this.translate.instant(
-          'page.program.program-people-affected.payment-status-popup.error-message',
-        ) +
-        ': <strong>' +
-        row[column.prop + '-error'] +
-        '</strong><br><br>' +
-        this.translate.instant(
-          'page.program.program-people-affected.payment-status-popup.fix-error',
-        )
-      : null;
-    const contentNotes = hasWaiting
-      ? null
-      : hasError
-      ? this.translate.instant(
-          'page.program.program-people-affected.payment-status-popup.notes',
-        )
-      : null;
-    const showRetryButton = hasWaiting ? false : hasError ? true : false;
+
+    let content = null;
+    let contentNotes = null;
+    let showRetryButton = false;
+    let voucherUrl = null;
+
+    if (hasWaiting && !hasError) {
+      content = row[column.prop + '-error'];
+    }
+    if (hasError) {
+      content = `${this.translate.instant(
+        'page.program.program-people-affected.payment-status-popup.error-message',
+      )}:
+         <strong>${row[column.prop + '-error']}</strong>
+         <br><br>
+         ${this.translate.instant(
+           'page.program.program-people-affected.payment-status-popup.fix-error',
+         )}`;
+      contentNotes = this.translate.instant(
+        'page.program.program-people-affected.payment-status-popup.notes',
+      );
+      showRetryButton = true;
+    }
+
     const payoutDetails: PopupPayoutDetails =
       hasError || value.hasMessageIcon || value.hasMoneyIconTable
         ? {
@@ -838,16 +841,15 @@ export class ProgramPeopleAffectedComponent implements OnInit {
             currency: this.program.currency,
           }
         : null;
-    let voucherUrl = null;
-    let voucherButtons = null;
 
     if (this.hasVoucherSupport(row.fsp) && !hasError && !!value) {
       const voucherBlob = await this.programsService.exportVoucher(
         row.referenceId,
         column.installmentIndex,
       );
-      voucherUrl = window.URL.createObjectURL(voucherBlob);
-      voucherButtons = true;
+      if (voucherBlob) {
+        voucherUrl = window.URL.createObjectURL(voucherBlob);
+      }
     }
 
     const titleError = hasError ? `${column.name}: ${value.text}` : null;
@@ -864,7 +866,7 @@ export class ProgramPeopleAffectedComponent implements OnInit {
         contentNotes,
         showRetryButton,
         payoutDetails,
-        voucherButtons,
+        showVoucherButtons: voucherUrl ? true : false,
         imageUrl: voucherUrl,
       },
     });

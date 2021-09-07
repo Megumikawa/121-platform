@@ -58,7 +58,7 @@
   </div>
   <div *ngIf="contentNotes" [innerHTML]="contentNotes">
   </div>
-  <div *ngIf="voucherButtons">
+  <div *ngIf="showVoucherButtons">
     <ion-button (click)="getBalance()">
       {{ 'page.program.program-people-affected.payment-status-popup.get-balance'|translate }}
     </ion-button>
