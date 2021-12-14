@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/global-121/121-platform/compare/v1.29.0...master)
 
+### Added
+
+- 2021-12-14: Added whatsappGenericMesage to the NL program in notifications.
+
 ---
 ## [1.29.0](https://github.com/global-121/121-platform/compare/v1.28.0...v1.29.0) - 2021-12-13
 
