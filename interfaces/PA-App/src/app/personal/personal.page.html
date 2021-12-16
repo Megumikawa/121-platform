@@ -3,7 +3,7 @@
     <ion-title>
       {{ 'tabs.you'|translate }}
     </ion-title>
-    <ion-buttons slot="end" *ngIf="isDebug">
+    <ion-buttons slot="end" *ngIf="false">
       <ion-button
         (click)="debugToggleShowDebug()"
         [color]="showDebug ? 'warning' : ''"
@@ -17,7 +17,7 @@
 </ion-header>
 
 <div
-  *ngIf="isDebug"
+  *ngIf="false"
   [hidden]="!showDebug"
   class="ion-padding"
   style="background: #fff"

@@ -107,6 +107,7 @@ export class PersonalPage implements OnInit {
   async ngOnInit() {
     // Prevent automatic behaviour while debugging/developing:
     if (this.isDebug && this.showDebug) {
+      this.insertSection(PersonalComponents.contactDetails)
       return;
     }
 

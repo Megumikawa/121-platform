@@ -1,8 +1,35 @@
-<section *ngIf="isCanceled === false">
-  <dialogue-turn [isConnected]="true">
-    <p
-      [innerHTML]="contactDetails"
-      class="contact-details--content"
-    ></p>
+  <dialogue-turn actor=system>
+    <p>show text</p>
   </dialogue-turn>
-</section>
+  <dialogue-turn [isConnected]="true">
+    <p>show text</p>
+  </dialogue-turn>
+  <dialogue-turn actor=self>
+    <p>show text</p>
+  </dialogue-turn>
+  <dialogue-turn actor=self [isConnected]="true">
+    <p>show text</p>
+    <ion-button (click)="show=true;">Click!</ion-button>
+  </dialogue-turn>
+  <dialogue-turn actor=self *ngIf=show [isSpoken]=show>
+    <p>show text</p>
+      <ion-radio-group (ionChange)="changeSignupSignin($event.detail.value)">
+        <ion-item color="light" lines="full" class="ion-no-padding">
+            <ion-label class="ion-text-wrap ion-padding-end">
+              option1
+            </ion-label>
+            <ion-radio value="option1"></ion-radio>
+        </ion-item>
+        <ion-item color="light" class="ion-no-padding" lines="full">
+            <ion-label class="ion-text-wrap ion-padding-end">
+              option2
+            </ion-label>
+            <ion-radio value="option2"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+      <ion-row class="ion-nowrap ion-align-items-center ion-margin-top">
+        <ion-button type="submit" (click)="submitSignupSignin()" expand="block"
+          style="flex-basis:100%">{{ 'shared.submit-button'|translate }}</ion-button>
+      </ion-row>
+  </dialogue-turn>
+

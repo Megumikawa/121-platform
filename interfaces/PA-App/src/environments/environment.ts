@@ -7,15 +7,15 @@ export const environment = {
 
   // Configuration/Feature-switches:
   isDebug: true, // Controls debugging features
-  showDebug: false, // Controls debugging features
-  useAnimation: false, // Use animations and delays in the interface
-  alwaysShowTextPlayer: true, // Also show text-player for missing audio-files
+  showDebug: true, // Controls debugging features
+  useAnimation: true, // Use animations and delays in the interface
+  alwaysShowTextPlayer: false, // Also show text-player for missing audio-files
 
   envName: '', // To highlight the environment used
-  locales: 'en,am_ET,ar,fr,nl,pt_BR,saq_KE,ti,tl,tuv_KE,in,es', // Comma-separated string of enabled locales, i.e: 'en,es,nl_BE'
+  locales: 'en', // Comma-separated string of enabled locales, i.e: 'en,es,nl_BE'
 
   // APIs:
-  url_121_service_api: 'http://localhost:3000/api',
+  url_121_service_api: 'https://test-vm.121.global/121-service/api',
 
   // Third-party tokens:
   ai_ikey: '',

@@ -7,13 +7,13 @@ export const environment = {
 
   // Configuration/Feature-switches:
   isDebug: true, // Controls debugging features
-  showDebug: false, // Controls debugging features
-  useAnimation: false, // Use animations and delays in the interface
+  showDebug: true, // Controls debugging features
+  useAnimation: true, // Use animations and delays in the interface
   useServiceWorker: false, // Enable 'offline' support
   envName: '', // To highlight the environment used
 
   // APIs:
-  url_121_service_api: 'http://localhost:3000/api',
+  url_121_service_api: 'https://test-vm.121.global/121-service/api',
 
   // Third-party tokens:
   ai_ikey: '',
